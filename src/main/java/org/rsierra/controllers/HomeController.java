@@ -15,8 +15,8 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-	@GetMapping("/tabla")
-	public String showTabla(Model model) {
+	@GetMapping("/table")
+	public String showTable(Model model) {
 		List<Vacancy> lista = getVacantes();
 		model.addAttribute("vacantes", lista);
 

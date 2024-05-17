@@ -1,4 +1,5 @@
 # java-spring-course-mvc
 Spring Boot 3. Aplicaciones web y REST APIs con Spring MVC - Udemy
 
-Seccion 2: Spring Boot & Thymeleaf introduction
+- Section 2: Spring Boot & Thymeleaf - Introduction
+- Section 3: Spring Boot & Thymeleaf - Controllers
