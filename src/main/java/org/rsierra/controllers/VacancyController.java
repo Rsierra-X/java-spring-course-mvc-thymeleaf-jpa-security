@@ -18,11 +18,12 @@ public class VacancyController {
         return "vacancy/detail";
     }
 
-    /*@GetMapping("/delete")
-    public String eliminar(@RequestParam("id") int idVacante, Model model) {
-        System.out.println("Borrando vacante con id: " + idVacante);
-        model.addAttribute("id", idVacante);
-        return "mensaje";
-    }*/
+    //sending params as a http
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") int id, Model model) {
+        System.out.println("Borrando vacante con id: " + id);
+        model.addAttribute("id", id);
+        return "message";
+    }
 
 }
