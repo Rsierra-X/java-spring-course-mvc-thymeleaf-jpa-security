@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>available positions</title>
+</head>
+<body>
+    <h1>Available positions</h1>
+    <ol>
+        <li th:each="tmpEmp:${positionsList}" th:text="${tmpEmp}"></li>
+    </ol>
+</body>
+</html>
