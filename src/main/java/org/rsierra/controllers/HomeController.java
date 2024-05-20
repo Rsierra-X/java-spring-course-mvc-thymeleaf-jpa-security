@@ -22,7 +22,7 @@ public class HomeController {
 	public String showTable(Model model) {
 		List<Vacancy> lista = vacancyService.getVacancies();
 		model.addAttribute("vacantes", lista);
-		return "tabla";
+		return "table";
 	}
 
 	@GetMapping("/vacancyDetail")
