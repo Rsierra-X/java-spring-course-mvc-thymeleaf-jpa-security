@@ -25,8 +25,8 @@ public class VacancyServiceImp implements IVacancyService{
             vacante1.setDescription("Solicitamos Ing. Civil para diseñar puente peatonal.");
             vacante1.setDate(sdf.parse("08-02-2019"));
             vacante1.setSalary(15000.0);
-            vacante1.setDestacado(1);
-            vacante1.setImagen("empresa1.png");
+            vacante1.setHighlighted(1);
+            vacante1.setImage("empresa1.png");
 
 
             // Creamos la oferta de Trabajo 2.
@@ -36,8 +36,8 @@ public class VacancyServiceImp implements IVacancyService{
             vacante2.setDescription("Empresa importante solicita contador con 5 años de experiencia titulado.");
             vacante2.setDate(sdf.parse("09-02-2019"));
             vacante2.setSalary(12000.0);
-            vacante1.setDestacado(0);
-            vacante2.setImagen("empresa2.png");
+            vacante1.setHighlighted(0);
+            vacante2.setImage("empresa2.png");
 
 
             // Creamos la oferta de Trabajo 3.
@@ -47,7 +47,7 @@ public class VacancyServiceImp implements IVacancyService{
             vacante3.setDescription("Empresa internacional solicita Ingeniero mecánico para mantenimiento de la instalación eléctrica.");
             vacante3.setDate(sdf.parse("10-02-2019"));
             vacante3.setSalary(10500.0);
-            vacante1.setDestacado(0);
+            vacante1.setHighlighted(0);
 
             // Creamos la oferta de Trabajo 4.
             Vacancy vacante4 = new Vacancy();
@@ -56,8 +56,8 @@ public class VacancyServiceImp implements IVacancyService{
             vacante4.setDescription("Solicitamos Diseñador Gráfico titulado para diseñar publicidad de la empresa.");
             vacante4.setDate(sdf.parse("11-02-2019"));
             vacante4.setSalary(7500.0);
-            vacante1.setDestacado(1);
-            vacante4.setImagen("empresa3.png");
+            vacante1.setHighlighted(1);
+            vacante4.setImage("empresa3.png");
 
 
             list.add(vacante1);
