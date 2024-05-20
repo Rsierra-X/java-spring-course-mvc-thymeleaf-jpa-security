@@ -17,11 +17,11 @@ import java.util.List;
 @Controller
 public class HomeController {
 	@Autowired
-	private IVacancyService VacancyService;
+	private IVacancyService vacancyService;
 
 	@GetMapping("/table")
 	public String showTable(Model model) {
-		List<Vacancy> lista = VacancyService.getVacancies();
+		List<Vacancy> lista = vacancyService.getVacancies();
 		model.addAttribute("vacantes", lista);
 		return "tabla";
 	}

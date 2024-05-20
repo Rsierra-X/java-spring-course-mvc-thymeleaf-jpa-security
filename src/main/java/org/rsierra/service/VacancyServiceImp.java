@@ -70,8 +70,18 @@ public class VacancyServiceImp implements IVacancyService{
         }
     }
 
-    @Override
     public List<Vacancy> getVacancies() {
         return list;
+    }
+
+    public Vacancy getVacancyById(int id) {
+
+        for (Vacancy vacancy : list) {
+            if (vacancy.getId() == id) {
+                return vacancy;
+            }
+        }
+
+        return null;
     }
 }
