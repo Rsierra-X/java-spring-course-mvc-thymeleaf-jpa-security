@@ -7,8 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,7 +38,7 @@ public class HomeController {
 
 	@GetMapping("/list")
 	public String showList(Model model) {
-		List<String> positionsList = new LinkedList<String>();
+		List<String> positionsList = new LinkedList<>();
 		positionsList.add("System Engineer");
 		positionsList.add("Account Manager");
 		positionsList.add("Seller Manager");

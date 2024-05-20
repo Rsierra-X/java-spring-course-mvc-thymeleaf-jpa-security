@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class VacancyServiceImp implements IVacancyService{
 
-    private List<Vacancy> list = null;
+    private final List<Vacancy> list;
 
     public VacancyServiceImp() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
