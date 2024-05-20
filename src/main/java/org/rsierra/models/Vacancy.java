@@ -9,15 +9,15 @@ public class Vacancy {
     private String description;
     private Date date;
     private Double salary;
-    private Integer destacado;
-    private String imagen = "no-image.png";
+    private Integer highlighted;
+    private String image = "no-image.png";
 
-    public Integer getDestacado() {
-        return destacado;
+    public Integer getHighlighted() {
+        return highlighted;
     }
 
-    public void setDestacado(Integer destacado) {
-        this.destacado = destacado;
+    public void setHighlighted(Integer highlighted) {
+        this.highlighted = highlighted;
     }
 
     public Integer getId() {
@@ -60,12 +60,12 @@ public class Vacancy {
         this.salary = salary;
     }
 
-    public String getImagen() {
-        return imagen;
+    public String getImage() {
+        return image;
     }
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override

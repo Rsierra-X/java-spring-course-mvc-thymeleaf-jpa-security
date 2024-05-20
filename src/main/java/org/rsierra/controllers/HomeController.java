@@ -22,7 +22,7 @@ public class HomeController {
 	public String showTable(Model model) {
 		List<Vacancy> lista = vacancyService.getVacancies();
 		model.addAttribute("vacantes", lista);
-		return "tabla";
+		return "table";
 	}
 
 	@GetMapping("/vacancyDetail")
@@ -50,17 +50,8 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home(Model model) {
-
-		String nombre = "System Engineer";
-		Date fechaPub = new Date();
-		double salario = 9000.0;
-		boolean vigente = true;
-		
-		model.addAttribute("nombre", nombre);
-		model.addAttribute("fecha", fechaPub);
-		model.addAttribute("salario", salario);
-		model.addAttribute("vigente", vigente);
-		
+		List<Vacancy> list = vacancyService.getVacancies();
+		model.addAttribute("vacancies", list);
 		return "home";
 	}
 	
