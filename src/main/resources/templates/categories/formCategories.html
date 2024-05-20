@@ -1,20 +1,93 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Create Categories</title>
-</head>
-<body>
-<h1>Create Categories</h1>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
 
-<form th:action="@{/categories/save}" method="post">
-    Name:<br>
-    <input type="text" name="name" value="">
-    <br>
-    Description:<br>
-    <input type="text" name="description" value="">
-    <br><br>
-    <input type="submit" value="Save">
-</form>
+    <title>JobsApp | Category Creation</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">JobsApp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Menu 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Menu 2</a>
+                </li>
+            </ul>
+            <a class="btn btn-primary" href="#">Login</a>&nbsp;
+            <a class="btn btn-primary" href="#">Register</a>
+        </div>
+    </nav>
+</header>
+
+<main role="main">
+    <hr>
+    <div class="container">
+
+        <div class="card">
+            <h4 class="card-header"><strong>Category Details</strong></h4>
+            <div class="card-body">
+                <form th:action="@{/categories/save}" method="post" >
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter category name" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" name="description" id="description" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <button type="submit" title="Save record." class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div> <!-- /container -->
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>
+            &copy; 2023 JobsApp, Inc. | WebApp developed with Spring Boot 3.0.0 | Author: Raúl Sierra | &middot; <a href="#">Privacy</a>
+            &middot; <a href="#">Terms</a>
+        </p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}" src=""></script>
 </body>
 </html>
