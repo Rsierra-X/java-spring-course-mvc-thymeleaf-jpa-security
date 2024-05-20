@@ -10,7 +10,7 @@ import java.util.List;
 
 //Imp = Implementation
 @Service
-public class VacancyServiceImp implements IVacancyService{
+public class VacancyServiceImp implements IVacancyService {
 
     private final List<Vacancy> list;
 
@@ -21,39 +21,37 @@ public class VacancyServiceImp implements IVacancyService{
             // Creamos la oferta de Trabajo 1.
             Vacancy vacante1 = new Vacancy();
             vacante1.setId(1);
-            vacante1.setName("Ingeniero Civil"); // Titulo de la vacante
-            vacante1.setDescription("Solicitamos Ing. Civil para diseñar puente peatonal.");
+            vacante1.setName("Civil Engineer"); // Job title
+            vacante1.setDescription("We are looking for a Civil Engineer to design a pedestrian bridge.");
             vacante1.setDate(sdf.parse("08-02-2019"));
             vacante1.setSalary(15000.0);
             vacante1.setHighlighted(1);
             vacante1.setImage("empresa1.png");
 
-
-            // Creamos la oferta de Trabajo 2.
+// Create Job Offer 2.
             Vacancy vacante2 = new Vacancy();
             vacante2.setId(2);
-            vacante2.setName("Contador Publico");
-            vacante2.setDescription("Empresa importante solicita contador con 5 años de experiencia titulado.");
+            vacante2.setName("Certified Public Accountant");
+            vacante2.setDescription("Important company is looking for a CPA with 5 years of experience.");
             vacante2.setDate(sdf.parse("09-02-2019"));
             vacante2.setSalary(12000.0);
             vacante1.setHighlighted(0);
             vacante2.setImage("empresa2.png");
 
-
-            // Creamos la oferta de Trabajo 3.
+// Create Job Offer 3.
             Vacancy vacante3 = new Vacancy();
             vacante3.setId(3);
-            vacante3.setName("Ingeniero Eléctrico");
-            vacante3.setDescription("Empresa internacional solicita Ingeniero mecánico para mantenimiento de la instalación eléctrica.");
+            vacante3.setName("Electrical Engineer");
+            vacante3.setDescription("International company is looking for a mechanical engineer for electrical maintenance.");
             vacante3.setDate(sdf.parse("10-02-2019"));
             vacante3.setSalary(10500.0);
             vacante1.setHighlighted(0);
 
-            // Creamos la oferta de Trabajo 4.
+// Create Job Offer 4.
             Vacancy vacante4 = new Vacancy();
             vacante4.setId(4);
-            vacante4.setName("Diseñador Gráfico");
-            vacante4.setDescription("Solicitamos Diseñador Gráfico titulado para diseñar publicidad de la empresa.");
+            vacante4.setName("Graphic Designer");
+            vacante4.setDescription("We are looking for a certified Graphic Designer to design company advertisements.");
             vacante4.setDate(sdf.parse("11-02-2019"));
             vacante4.setSalary(7500.0);
             vacante1.setHighlighted(1);

@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,7 +7,7 @@
 	<meta name="author" content="">
 	<link rel="icon" href="favicon.ico">
 
-	<title>EmpleosApp | Aplicación para publicar Ofertas de Trabajo.</title>
+	<title>JobsApp | Application to Post Job Offers.</title>
 	<!-- Bootstrap core CSS -->
 	<link th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 	<!-- Custom styles for this template -->
@@ -19,7 +19,7 @@
 
 <header>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<a class="navbar-brand" href="#">EmpleosApp</a>
+		<a class="navbar-brand" href="#">JobsApp</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -27,7 +27,7 @@
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<a class="nav-link active" href="#">Inicio</a>
+					<a class="nav-link active" href="#">Home</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Menu 1</a>
@@ -36,8 +36,8 @@
 					<a class="nav-link" href="#">Menu 2</a>
 				</li>
 			</ul>
-			<a class="btn btn-primary" href="#">Ingresar</a>&nbsp;
-			<a class="btn btn-primary" href="#">Registrarse</a>
+			<a class="btn btn-primary" href="#">Login</a>&nbsp;
+			<a class="btn btn-primary" href="#">Register</a>
 		</div>
 	</nav>
 </header>
@@ -47,26 +47,26 @@
 	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<div class="container">
-			<h3>Encuentra el trabajo que andas buscando.</h3>
-			Puedes buscar por descripción y categoría.
+			<h3>Find the job you are looking for.</h3>
+			You can search by description and category.
 			<form class="form-inline">
-				<input type="text" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Escriba una búsqueda">&nbsp;
+				<input type="text" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Type a search">&nbsp;
 				<select class="custom-select custom-select mb-3">
-					<option selected>Seleccione una categoría</option>
-					<option value="1">Ventas</option>
-					<option value="2">Contabilidad</option>
-					<option value="3">Transporte</option>
-					<option value="4">Informática</option>
-					<option value="5">Construcción</option>
+					<option selected>Select a category</option>
+					<option value="1">Sales</option>
+					<option value="2">Accounting</option>
+					<option value="3">Transport</option>
+					<option value="4">IT</option>
+					<option value="5">Construction</option>
 				</select>&nbsp;
-				<button type="submit" class="btn btn-primary mb-3">Buscar</button>
+				<button type="submit" class="btn btn-primary mb-3">Search</button>
 			</form>
 		</div>
 	</div>
 	<hr>
 
 	<div class="container">
-		<h2 class="font-weight-bold text-center text-capitalize">DESTACADOS</h2>
+		<h2 class="font-weight-bold text-center text-capitalize">FEATURED</h2>
 		<hr>
 		<div class="row" th:each="vacancy : ${vacancies}">
 			<div class="col-md-3">
@@ -88,7 +88,7 @@
 <footer class="footer">
 	<div class="container">
 		<p>
-			&copy; 2024 vacancyApp, Inc. | WebApp develop with Spring Boot v3.2.5 | Author: Raul Sierra | &middot; <a href="#">Privacy</a>
+			&copy; 2024 vacancyApp, Inc. | WebApp developed with Spring Boot v3.2.5 | Author: Raul Sierra | &middot; <a href="#">Privacy</a>
 			&middot; <a href="#">Terms</a>
 		</p>
 	</div>
