@@ -1,6 +1,7 @@
 package org.rsierra.service;
 
 import org.rsierra.models.Vacancy;
+import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,13 +9,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 //Imp = Implementation
+@Service
 public class VacancyServiceImp implements IVacancyService{
 
     private List<Vacancy> list = null;
 
     public VacancyServiceImp() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        list = new LinkedList<Vacancy>();
+        list = new LinkedList<>();
         try {
             // Creamos la oferta de Trabajo 1.
             Vacancy vacante1 = new Vacancy();
@@ -22,7 +24,7 @@ public class VacancyServiceImp implements IVacancyService{
             vacante1.setName("Ingeniero Civil"); // Titulo de la vacante
             vacante1.setDescription("Solicitamos Ing. Civil para diseñar puente peatonal.");
             vacante1.setDate(sdf.parse("08-02-2019"));
-            vacante1.setSalary(8500.0);
+            vacante1.setSalary(15000.0);
             vacante1.setDestacado(1);
             vacante1.setImagen("empresa1.png");
 
