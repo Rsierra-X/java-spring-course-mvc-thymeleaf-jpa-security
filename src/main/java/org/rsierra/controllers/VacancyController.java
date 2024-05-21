@@ -20,15 +20,8 @@ public class VacancyController {
     }
 
     @PostMapping("/saveVacancy")
-    public String saveVacancy(
-            @RequestParam String name,
-            @RequestParam String description,
-            @RequestParam String status,
-            @RequestParam String date,
-            @RequestParam int featured,
-            @RequestParam Double salary,
-            @RequestParam String details) {
-        System.out.println(name + " " + description + " " + status + " " + date);
+    public String saveVacancy(Vacancy vacancy) {
+        System.out.println(vacancy);
         return "vacancy/listVacancies";
     }
 
