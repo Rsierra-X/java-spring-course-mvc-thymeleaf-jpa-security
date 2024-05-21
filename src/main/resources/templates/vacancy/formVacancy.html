@@ -41,14 +41,14 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input class="form-control" id="name" name="name" placeholder="Job Title" required="required"
+                                <input class="form-control" th:field="*{name}" id="name" name="name" placeholder="Job Title" required="required"
                                        type="text">
                             </div>
                         </div>
                         <div class="col-md-9">
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <input class="form-control" id="description" name="description" placeholder="Brief job description"
+                                <input class="form-control" th:field="*{description}" id="description" name="description" placeholder="Brief job description"
                                        required="required" type="text">
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="status">Status</label>
-                                <select class="form-control" id="status" name="status">
+                                <select class="form-control" th:field="*{status}" id="status" name="status">
                                     <option value="Created">Created</option>
                                     <option value="Approved">Approved</option>
                                     <option value="Deleted">Deleted</option>
@@ -80,13 +80,13 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="date">Publication Date</label>
-                                <input class="form-control" id="date" name="date" placeholder="Publication date"
+                                <input class="form-control" th:field="*{date}" id="date" name="date" placeholder="Publication date"
                                        required="required" type="text">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-check">
-                                <input checked="checked" class="form-check-input" id="featured" name="featured" type="checkbox"
+                                <input checked="checked" class="form-check-input" th:field="*{featured}" id="featured" name="featured" type="checkbox"
                                        value="1">
                                 <label class="form-check-label" for="featured">Featured</label>
                             </div>
@@ -96,7 +96,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="salary">Offered Salary (Approx)</label>
-                                <input class="form-control" id="salary" name="salary" placeholder="Approximate salary"
+                                <input class="form-control" th:field="*{salary}" id="salary" name="salary" placeholder="Approximate salary"
                                        required="required" type="text">
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                         <div class="col-md-9">
                             <div class="form-group">
                                 <label for="details"><strong>Details</strong></label>
-                                <textarea class="form-control" id="details" name="details" rows="7"></textarea>
+                                <textarea class="form-control" th:field="*{details}" id="details" name="details" rows="7"></textarea>
                             </div>
                         </div>
                         <div class="col-md-3">
