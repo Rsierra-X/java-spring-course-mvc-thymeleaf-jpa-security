@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,12 +31,12 @@ public class VacancyController {
     }
 
     @GetMapping("/create")
-    public String createVacancy() {
+    public String createVacancy(Vacancy vacancy) {
         return "vacancy/formVacancy";
     }
 
     @PostMapping("/saveVacancy")
-    public String saveVacancy(Vacancy vacancy, BindingResult bindingResult) {
+    public String saveVacancy(Vacancy vacancy, BindingResult bindingResult, RedirectAttributes attributes) {
         if (bindingResult.hasErrors()) {
             for (ObjectError objectError : bindingResult.getAllErrors()) {
                 System.out.println(objectError.getDefaultMessage());
@@ -43,7 +44,8 @@ public class VacancyController {
             return "vacancy/formVacancy";
         }
         vacancyService.saveVacancy(vacancy);
-        return "vacancy/listVacancies";
+        attributes.addFlashAttribute("successMsg", "Save Success");
+        return "redirect:/vacancy/index";
     }
 
     @GetMapping("/view/{id}")
