@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/vacancy")
@@ -18,6 +19,13 @@ public class VacancyController {
 
     @Autowired
     private IVacancyService vacancyService;
+
+    @GetMapping("/index")
+    public String showVacancies(Model model) {
+        List<Vacancy> vacancyList = vacancyService.getVacancies();
+        model.addAttribute("vacancies", vacancyList);
+        return "vacancy/listVacancies";
+    }
 
     @GetMapping("/create")
     public String createVacancy() {
