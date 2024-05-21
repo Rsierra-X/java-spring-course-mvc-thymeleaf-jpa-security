@@ -5,10 +5,7 @@ import org.rsierra.service.IVacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/vacancy")
@@ -16,6 +13,24 @@ public class VacancyController {
 
     @Autowired
     private IVacancyService vacancyService;
+
+    @GetMapping("/create")
+    public String createVacancy() {
+        return "vacancy/formVacancy";
+    }
+
+    @PostMapping("/saveVacancy")
+    public String saveVacancy(
+            @RequestParam String name,
+            @RequestParam String description,
+            @RequestParam String status,
+            @RequestParam String date,
+            @RequestParam int featured,
+            @RequestParam Double salary,
+            @RequestParam String details) {
+        System.out.println(name + " " + description + " " + status + " " + date);
+        return "vacancy/listVacancies";
+    }
 
     @GetMapping("/view/{id}")
     public String viewDetail(@PathVariable int id, Model model) {

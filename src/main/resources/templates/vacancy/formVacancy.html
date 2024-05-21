@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <link href="favicon.ico" rel="icon">
+
+    <title>EmpleosApp | Job Offer Creation</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" th:href="@{/bootstrap/css/jumbotron.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/sticky-footer-navbar.css}">
+    <link rel="stylesheet" th:href="@{https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css}">
+</head>
+
+<body>
+
+<header th:insert="~{fragments/menu :: menu-initial}"></header>
+
+<main role="main">
+    <hr>
+    <div class="container">
+        <div class="card">
+            <h4 class="card-header"><strong>Job Offer Data</strong></h4>
+            <div class="card-body">
+                <form th:action="@{/vacancy/saveVacancy}" method="post">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input class="form-control" id="name" name="name" placeholder="Job Title" required="required"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input class="form-control" id="description" name="description" placeholder="Brief job description"
+                                       required="required" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select class="form-control" id="category" name="category">
+                                    <option value="1">Sales</option>
+                                    <option value="2">Accounting</option>
+                                    <option value="3">Transport</option>
+                                    <option value="4">IT</option>
+                                    <option value="5">Construction</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select class="form-control" id="status" name="status">
+                                    <option value="Created">Created</option>
+                                    <option value="Approved">Approved</option>
+                                    <option value="Deleted">Deleted</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="date">Publication Date</label>
+                                <input class="form-control" id="date" name="date" placeholder="Publication date"
+                                       required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input checked="checked" class="form-check-input" id="featured" name="featured" type="checkbox"
+                                       value="1">
+                                <label class="form-check-label" for="featured">Featured</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="salary">Offered Salary (Approx)</label>
+                                <input class="form-control" id="salary" name="salary" placeholder="Approximate salary"
+                                       required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="imageFile">Image</label>
+                                <input class="form-control-file" id="imageFile" name="imageFile" type="file">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="details"><strong>Details</strong></label>
+                                <textarea class="form-control" id="details" name="details" rows="7"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="image">Image/Logo</label>
+                            <img alt="Generic placeholder image" class="rounded mx-auto d-block"
+                                 height="200" src="images/construccion-logo.png" width="200">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Save</button>
+
+                </form>
+            </div>
+        </div>
+    </div> <!-- /container -->
+
+</main>
+
+<footer th:insert="~{fragments/footer :: footer-fragment}"></footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="tinymce/tinymce.min.js"></script>
+<script>
+
+    $(function () {
+            $("#date").datepicker({dateFormat: 'dd-mm-yy'});
+        }
+    );
+
+    /*
+    tinymce.init({
+        selector: '#details',
+        plugins: "textcolor, table lists code",
+        toolbar: " undo redo | bold italic | alignleft aligncenter alignright alignjustify \n\
+                  | bullist numlist outdent indent | forecolor backcolor table code"
+    });
+
+    */
+
+</script>
+</body>
+</html>
