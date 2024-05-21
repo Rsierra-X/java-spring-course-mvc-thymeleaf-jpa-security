@@ -82,4 +82,8 @@ public class VacancyServiceImp implements IVacancyService {
 
         return null;
     }
+
+    public void saveVacancy(Vacancy vacancy) {
+        list.add(vacancy);
+    }
 }

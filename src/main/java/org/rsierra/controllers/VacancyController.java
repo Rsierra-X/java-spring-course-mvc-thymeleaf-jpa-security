@@ -3,9 +3,14 @@ package org.rsierra.controllers;
 import org.rsierra.models.Vacancy;
 import org.rsierra.service.IVacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/vacancy")
@@ -21,7 +26,7 @@ public class VacancyController {
 
     @PostMapping("/saveVacancy")
     public String saveVacancy(Vacancy vacancy) {
-        System.out.println(vacancy);
+        vacancyService.saveVacancy(vacancy);
         return "vacancy/listVacancies";
     }
 
@@ -39,6 +44,12 @@ public class VacancyController {
         System.out.println("Borrando vacante con id: " + id);
         model.addAttribute("id", id);
         return "message";
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
 
 }
