@@ -26,7 +26,17 @@
         <div class="card">
             <h4 class="card-header"><strong>Category Details</strong></h4>
             <div class="card-body">
-                <form th:action="@{/categories/save}" method="post" >
+                <form th:action="@{/categories/save}" method="post" th:object="${category}">
+                    <div
+                            th:if="${#fields.hasErrors('*')}"
+                            class="alert alert-danger"
+                            role="alert"
+                    >
+                        Por favor corrija los siguientes errores:
+                        <ul>
+                            <li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+                        </ul>
+                    </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
