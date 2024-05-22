@@ -3,6 +3,7 @@ package org.rsierra.controllers;
 import org.rsierra.models.Vacancy;
 import org.rsierra.service.ICategoryService;
 import org.rsierra.service.IVacancyService;
+import org.rsierra.utils.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.text.SimpleDateFormat;
@@ -40,12 +42,21 @@ public class VacancyController {
     }
 
     @PostMapping("/saveVacancy")
-    public String saveVacancy(Vacancy vacancy, BindingResult bindingResult, RedirectAttributes attributes) {
+    public String saveVacancy(Vacancy vacancy, @RequestParam("imageFile")MultipartFile multiPart, BindingResult bindingResult, RedirectAttributes attributes) {
         if (bindingResult.hasErrors()) {
             for (ObjectError objectError : bindingResult.getAllErrors()) {
                 System.out.println(objectError.getDefaultMessage());
             }
             return "vacancy/formVacancy";
+        }
+        if (!multiPart.isEmpty()) {
+            //String ruta = "/empleos/img-vacantes/"; // Linux/MAC
+            String route = "c:/empleos/img-vacantes/"; // Windows
+            String nameImage = Utility.saveFile(multiPart, route);
+            if (nameImage != null){ // La imagen si se subio
+                // Procesamos la variable nombreImagen
+                vacancy.setImage(nameImage);
+            }
         }
         vacancyService.saveVacancy(vacancy);
         attributes.addFlashAttribute("successMsg", "Save Success");
