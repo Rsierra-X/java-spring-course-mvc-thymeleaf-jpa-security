@@ -6,3 +6,4 @@ Spring Boot 3. Aplicaciones web y REST APIs con Spring MVC - Udemy
 - Section 4: Spring Boot & Thymeleaf - Dependencies Service Injection
 - Section 5: Spring Boot & Thymeleaf - fragments layouts
 - Section 6: Spring Boot & Thymeleaf - Data binding, Binding Result, Redirect Attributes
+- Section 7: Spring Boot & Thymeleaf - upload images
