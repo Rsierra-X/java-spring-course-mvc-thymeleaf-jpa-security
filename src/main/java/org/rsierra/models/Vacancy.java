@@ -13,6 +13,7 @@ public class Vacancy {
     private Double salary;
     private Integer featured;
     private String image = "no-image.png";
+    private Category category;
 
     public String getStatus() {
         return status;
@@ -86,6 +87,14 @@ public class Vacancy {
         this.details = details;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "Vacancy{" +
@@ -98,6 +107,7 @@ public class Vacancy {
                 ", salary=" + salary +
                 ", featured=" + featured +
                 ", image='" + image + '\'' +
+                ", category=" + category +
                 '}';
     }
 }
