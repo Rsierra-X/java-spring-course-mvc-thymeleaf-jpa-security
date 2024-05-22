@@ -1,6 +1,7 @@
 package org.rsierra.controllers;
 
 import org.rsierra.models.Vacancy;
+import org.rsierra.service.ICategoryService;
 import org.rsierra.service.IVacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -22,6 +23,8 @@ public class VacancyController {
 
     @Autowired
     private IVacancyService vacancyService;
+    @Autowired
+    private ICategoryService categoryService;
 
     @GetMapping("/index")
     public String showVacancies(Model model) {
@@ -31,7 +34,8 @@ public class VacancyController {
     }
 
     @GetMapping("/create")
-    public String createVacancy(Vacancy vacancy) {
+    public String createVacancy(Vacancy vacancy, Model model) {
+        model.addAttribute("categories", categoryService.getCategories());
         return "vacancy/formVacancy";
     }
 
