@@ -25,7 +25,7 @@ public class VacancyServiceImp implements IVacancyService {
             vacante1.setDescription("We are looking for a Civil Engineer to design a pedestrian bridge.");
             vacante1.setDate(sdf.parse("08-02-2019"));
             vacante1.setSalary(15000.0);
-            vacante1.setHighlighted(1);
+            vacante1.setFeatured(1);
             vacante1.setImage("empresa1.png");
 
 // Create Job Offer 2.
@@ -35,7 +35,7 @@ public class VacancyServiceImp implements IVacancyService {
             vacante2.setDescription("Important company is looking for a CPA with 5 years of experience.");
             vacante2.setDate(sdf.parse("09-02-2019"));
             vacante2.setSalary(12000.0);
-            vacante1.setHighlighted(0);
+            vacante1.setFeatured(0);
             vacante2.setImage("empresa2.png");
 
 // Create Job Offer 3.
@@ -45,7 +45,7 @@ public class VacancyServiceImp implements IVacancyService {
             vacante3.setDescription("International company is looking for a mechanical engineer for electrical maintenance.");
             vacante3.setDate(sdf.parse("10-02-2019"));
             vacante3.setSalary(10500.0);
-            vacante1.setHighlighted(0);
+            vacante1.setFeatured(0);
 
 // Create Job Offer 4.
             Vacancy vacante4 = new Vacancy();
@@ -54,7 +54,7 @@ public class VacancyServiceImp implements IVacancyService {
             vacante4.setDescription("We are looking for a certified Graphic Designer to design company advertisements.");
             vacante4.setDate(sdf.parse("11-02-2019"));
             vacante4.setSalary(7500.0);
-            vacante1.setHighlighted(1);
+            vacante1.setFeatured(1);
             vacante4.setImage("empresa3.png");
 
 
@@ -81,5 +81,9 @@ public class VacancyServiceImp implements IVacancyService {
         }
 
         return null;
+    }
+
+    public void saveVacancy(Vacancy vacancy) {
+        list.add(vacancy);
     }
 }

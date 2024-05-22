@@ -38,8 +38,8 @@
         <td th:text="${vacante.destacado == 1 ? 'Si' : 'No'}"></td>
         -->
         <td>
-            <span th:if="${vacante.highlighted==1}" class="badge badge-success">Si</span>
-            <span th:unless="${vacante.highlighted==1}" class="badge badge-danger">No</span>
+            <span th:if="${vacante.featured==1}" class="badge badge-success">Si</span>
+            <span th:unless="${vacante.featured==1}" class="badge badge-danger">No</span>
         </td>
         <td>
             <a th:href="@{/vacancy/view/{id} (id=${vacante.id})  }" class="btn btn-success">Detalle</a>

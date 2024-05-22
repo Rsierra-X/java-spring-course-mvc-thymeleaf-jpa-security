@@ -7,17 +7,27 @@ public class Vacancy {
     private Integer id;
     private String name;
     private String description;
+    private String status;
+    private String details;
     private Date date;
     private Double salary;
-    private Integer highlighted;
+    private Integer featured;
     private String image = "no-image.png";
 
-    public Integer getHighlighted() {
-        return highlighted;
+    public String getStatus() {
+        return status;
     }
 
-    public void setHighlighted(Integer highlighted) {
-        this.highlighted = highlighted;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Integer getFeatured() {
+        return featured;
+    }
+
+    public void setFeatured(Integer featured) {
+        this.featured = featured;
     }
 
     public Integer getId() {
@@ -68,14 +78,26 @@ public class Vacancy {
         this.image = image;
     }
 
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
     @Override
     public String toString() {
-        return "vacancy{" +
+        return "Vacancy{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", status='" + status + '\'' +
+                ", details='" + details + '\'' +
                 ", date=" + date +
                 ", salary=" + salary +
+                ", featured=" + featured +
+                ", image='" + image + '\'' +
                 '}';
     }
 }
