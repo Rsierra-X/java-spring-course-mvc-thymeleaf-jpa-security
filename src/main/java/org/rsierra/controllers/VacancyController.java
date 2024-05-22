@@ -5,6 +5,7 @@ import org.rsierra.service.ICategoryService;
 import org.rsierra.service.IVacancyService;
 import org.rsierra.utils.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/vacancy")
 public class VacancyController {
+
+    @Value("${companiesApp.path.images}")
+    private String path;
 
     @Autowired
     private IVacancyService vacancyService;
@@ -51,8 +55,8 @@ public class VacancyController {
         }
         if (!multiPart.isEmpty()) {
             //String ruta = "/empleos/img-vacantes/"; // Linux/MAC
-            String route = "c:/empleos/img-vacantes/"; // Windows
-            String nameImage = Utility.saveFile(multiPart, route);
+            //String path = "c:/empleos/img-vacantes/"; // Windows
+            String nameImage = Utility.saveFile(multiPart, path);
             if (nameImage != null){ // La imagen si se subio
                 // Procesamos la variable nombreImagen
                 vacancy.setImage(nameImage);
