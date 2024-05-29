@@ -8,6 +8,10 @@ Spring Boot 3. Aplicaciones web y REST APIs con Spring MVC - Udemy
   - Section 5: fragments layouts
   - Section 6: Data binding, Binding Result, Redirect Attributes
   - Section 7: upload images
-- **Section 8: Spring Boot & Spring Data JPA**
-  - Section 8 Repository: https://github.com/Rsierra-X/java-spring-course-mvc-data-JPA
-  - CRUD
+- **Section 8 - 11: Spring Boot & Spring Data JPA**
+
+  Repository: https://github.com/Rsierra-X/java-spring-course-mvc-data-JPA
+  - Section 8: Spring Data JPA, configuration and crud functions
+  - Section 9: Spring Data JPA, Sorted and Pagination functions
+  - Section 10: Spring Data JPA, Intermediate Tables
+  - Section 11: Spring Data JPA, Query custom methods
