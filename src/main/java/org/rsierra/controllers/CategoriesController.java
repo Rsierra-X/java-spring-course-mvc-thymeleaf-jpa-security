@@ -3,6 +3,7 @@ package org.rsierra.controllers;
 import org.rsierra.models.Category;
 import org.rsierra.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import java.util.List;
 public class CategoriesController {
 
     @Autowired
+    //@Qualifier("categoryServiceJpa")
     private ICategoryService categoryService;
 
     // @GetMapping("/index")
