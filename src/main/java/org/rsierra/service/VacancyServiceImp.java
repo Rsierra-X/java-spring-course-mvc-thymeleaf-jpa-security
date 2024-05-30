@@ -1,6 +1,8 @@
 package org.rsierra.service;
 
 import org.rsierra.models.Vacancy;
+import org.rsierra.repository.VacancyRepository;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -10,11 +12,14 @@ import java.util.List;
 
 //Imp = Implementation
 @Service
+
+
 public class VacancyServiceImp implements IVacancyService {
 
     private final List<Vacancy> list;
+    private final VacancyRepository vacancyRepository;
 
-    public VacancyServiceImp() {
+    public VacancyServiceImp(VacancyRepository vacancyRepository) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         list = new LinkedList<>();
         try {
@@ -66,6 +71,7 @@ public class VacancyServiceImp implements IVacancyService {
         } catch (ParseException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        this.vacancyRepository = vacancyRepository;
     }
 
     public List<Vacancy> getVacancies() {
@@ -85,5 +91,9 @@ public class VacancyServiceImp implements IVacancyService {
 
     public void saveVacancy(Vacancy vacancy) {
         list.add(vacancy);
+    }
+
+    public List<Vacancy> searchFeaturedVacancies() {
+        return vacancyRepository.findByFeaturedAndStatusOrderByIdDesc(1,"Aprobada");
     }
 }
