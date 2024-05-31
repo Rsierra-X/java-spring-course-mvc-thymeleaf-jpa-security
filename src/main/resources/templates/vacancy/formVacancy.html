@@ -41,6 +41,8 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="name">Name</label>
+                                <input type="hidden" th:field="*{id}" >
+                                <input type="hidden" th:field="*{image}" >
                                 <input class="form-control" th:field="*{name}" id="name" name="name" placeholder="Job Title" required="required"
                                        type="text">
                             </div>
@@ -115,7 +117,7 @@
                             <label for="imagen">Imagen/Logo</label>
                             <img
                                 class="rounded mx-auto d-block"
-                                src=""
+                                th:src="@{/images/{img} ( img=${vacancy.image} )  }"
                                 alt="Generic placeholder image"
                                 width="200"
                                 height="200"
