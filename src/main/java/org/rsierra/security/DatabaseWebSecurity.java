@@ -32,7 +32,7 @@ public class DatabaseWebSecurity {
                 .requestMatchers("/bootstrap/**", "/images/**", "/tinymce/**", "/logos/**").permitAll()
 
                 // Las vistas públicas no requieren autenticación
-                .requestMatchers("/", "/signup", "/search", "/vacantes/view/**").permitAll()
+                .requestMatchers("/", "/signup", "/search", "/vacancy/view/**").permitAll()
 
                 // Todas las demás URLs de la Aplicación requieren autenticación
                 .anyRequest().authenticated());
