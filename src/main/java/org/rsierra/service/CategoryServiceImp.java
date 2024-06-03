@@ -77,5 +77,10 @@ public class CategoryServiceImp implements ICategoryService{
         return null;
     }
 
+    @Override
+    public void delete(Integer idCategory) {
+
+    }
+
 
 }

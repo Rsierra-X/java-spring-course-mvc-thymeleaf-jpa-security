@@ -12,10 +12,10 @@
             <li class="nav-item" sec:authorize="hasAnyAuthority('SUPERVISOR','ADMINISTRADOR')">
                 <a class="nav-link active" href="/vacancy/index">Vacancies</a>
             </li>
-            <li class="nav-item" sec:authorize="hasAnyAuthority('ADMINISTRADOR')">
+            <li class="nav-item" >
                 <a class="nav-link" href="/categories/index">Categories</a>
             </li>
-            <li class="nav-item" sec:authorize="hasAnyAuthority('ADMINISTRADOR')">
+            <li class="nav-item" >
                 <a class="nav-link" th:href="@{/usuarios/index}" >Usuarios</a>
             </li>
             <li class="nav-item">
