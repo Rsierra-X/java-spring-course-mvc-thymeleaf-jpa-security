@@ -31,4 +31,8 @@ public class VacancyServiceJpa implements IVacancyService {
     public List<Vacancy> searchFeaturedVacancies() {
         return vacancyRepository.findByFeaturedAndStatusOrderByIdDesc(1,"Aprobada");
     }
+
+    public void deleteVacancy(Integer idVacancy) {
+        vacancyRepository.deleteById(idVacancy);
+    }
 }

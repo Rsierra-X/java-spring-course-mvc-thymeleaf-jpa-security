@@ -76,11 +76,12 @@ public class VacancyController {
     }
 
     //sending params as a http
-    @GetMapping("/delete")
-    public String delete(@RequestParam("id") int id, Model model) {
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable int id , RedirectAttributes attributes) {
         System.out.println("Borrando vacante con id: " + id);
-        model.addAttribute("id", id);
-        return "message";
+        vacancyService.deleteVacancy(id);
+        attributes.addFlashAttribute("successMsg","La vacante fue eliminada!");
+        return "redirect:/vacancy/index";
     }
 
     @InitBinder
