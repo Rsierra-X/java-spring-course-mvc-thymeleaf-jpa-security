@@ -2,12 +2,14 @@ package org.rsierra.service;
 
 import org.rsierra.models.User;
 
+import java.util.List;
+
 public interface IUserService {
-  /*  void guardar(Usuario usuario);
-    void eliminar(Integer idUsuario);
-    List<Usuario> buscarTodos();
-    List<Usuario> buscarRegistrados();*/
-    /*Usuario buscarPorId(Integer idUsuario);*/
+  void save(User user);
+    void delete(Integer idUser);
+    List<User> getAllUsers();
+    List<User> searchRegisterUser();
+    User searchById(Integer idUser);
     User findByUsername(String username);
    /* int bloquear(int idUsuario);
     int activar(int idUsuario);*/

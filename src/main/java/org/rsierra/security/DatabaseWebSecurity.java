@@ -38,7 +38,7 @@ public class DatabaseWebSecurity {
                 // Asignar permisos a URLs por ROLES
                 .requestMatchers("/vacancy/**").hasAnyAuthority("SUPERVISOR", "ADMINISTRADOR")
                 .requestMatchers("/categories/**").hasAnyAuthority("SUPERVISOR", "ADMINISTRADOR")
-                .requestMatchers("/users/**").hasAnyAuthority("ADMINISTRADOR")
+                //.requestMatchers("/users/**").hasAnyAuthority("ADMINISTRADOR")
 
 
                 // Todas las demás URLs de la Aplicación requieren autenticación

@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>EmpleosApp | Listado de Usuarios</title>
+    <title>EmpleosApp | User List</title>
     <!-- Bootstrap core CSS -->
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -18,36 +18,36 @@
 
 <body>
 
-<header th:insert="~{fragments/menu :: menu-principal}"></header>
+<header th:insert="~{fragments/menu :: menu-initial}"></header>
 
 <main role="main">
     <hr>
     <div class="container">
 
         <div class="card">
-            <h4 class="card-header"><strong>Listado de Usuarios</strong></h4>
+            <h4 class="card-header"><strong>User List</strong></h4>
             <div class="card-body">
                 <hr>
-                <div th:if="${msg != null}" class='alert alert-success' th:text="${msg}" role='alert'></div>
+                <div th:if="${successMsg != null}" class='alert alert-success' th:text="${successMsg}" role='alert'></div>
                 <table class="table table-hover">
                     <thead class="thead-light">
                     <tr>
-                        <th scope="col">Nombre</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Username</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Estatus</th>
-                        <th scope="col">Operaciones</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Operations</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="usuario : ${usuarios}">
-                        <td th:text="${usuario.nombre}">Iván Eliseo Tinajero Díaz</td>
-                        <td th:text="${usuario.username}">itinajero</td>
-                        <td th:text="${usuario.email}">ivanetinajero@gmail.com</td>
-                        <td th:text="${usuario.estatus == 1 ? 'Activo' : 'Bloqueado' }">Activo</td>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.name}">Iván Eliseo Tinajero Díaz</td>
+                        <td th:text="${user.username}">itinajero</td>
+                        <td th:text="${user.email}">ivanetinajero@gmail.com</td>
+                        <td th:text="${user.status == 1 ? 'Active' : 'Blocked' }">Active</td>
 
                         <td>
-                            <a th:href="@{/usuarios/delete/{id} (id=${usuario.id}) }" class="btn btn-success btn-sm confirmar" role="button" title="Eliminar"><i class="fas fa-trash" aria-hidden="true"></i></a>
+                            <a th:href="@{/users/delete/{id} (id=${user.id}) }" class="btn btn-success btn-sm confirmar" role="button" title="Delete"><i class="fas fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>
 
@@ -60,7 +60,7 @@
 
 </main>
 
-<footer th:insert="~{fragments/footer :: pie-pagina}" class="footer"></footer>
+<footer th:insert="~{fragments/footer :: footer-fragment}" class="footer"></footer>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -70,13 +70,13 @@
 
 <script>
 
-    // Guardamos en una variable una funcion que muestra un cuadro de dialogo de tipo confirm
+    // We store in a variable a function that shows a confirm dialog box
     var dialogoConfirm = function (e) {
-        if (!confirm('¿Realmente desea eliminar el registro?'))
+        if (!confirm('Do you really want to delete the record?'))
             e.preventDefault();
     };
 
-    // Aplicamos a todos los elementos HTML que tengan la clase CSS 'confirmar' el evento click para que muestre el cuadro de dialogo de confirmacion.
+    // We apply the click event to all HTML elements that have the CSS class 'confirmar' to display the confirmation dialog box.
     document.querySelectorAll('.confirmar').forEach(function(elemento) {
         elemento.addEventListener('click', dialogoConfirm, false);
     });

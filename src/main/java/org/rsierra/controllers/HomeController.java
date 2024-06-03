@@ -1,6 +1,7 @@
 package org.rsierra.controllers;
 
 import jakarta.servlet.http.HttpSession;
+import org.rsierra.models.Profile;
 import org.rsierra.models.User;
 import org.rsierra.models.Vacancy;
 import org.rsierra.service.IUserService;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import java.util.Date;
@@ -76,6 +79,30 @@ public class HomeController {
 		}
 
 		return "redirect:/";
+	}
+
+	@GetMapping("/signup")
+	public String registrarse(User user) {
+		return "registrationForm";
+	}
+
+	@PostMapping("/signup")
+	public String saveRegister(User user, RedirectAttributes attributes) {
+		user.setStatus(1); // Activado por defecto
+		user.setRegisterDate(new Date()); // Fecha de Registro, la fecha actual del servidor
+
+		// Creamos el Perfil que le asignaremos al usuario nuevo
+		Profile profile = new Profile();
+		profile.setId(3); // Perfil USUARIO
+		user.addProfile(profile);
+
+		/**
+		 * Guardamos el usuario en la base de datos. El Perfil se guarda automaticamente
+		 */
+		serviceUser.save(user);
+		attributes.addFlashAttribute("successMsg", "El registro fue guardado correctamente!");
+
+		return "redirect:/users/index";
 	}
 
 	@ModelAttribute
