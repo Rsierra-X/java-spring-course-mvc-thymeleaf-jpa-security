@@ -47,7 +47,7 @@
                         <td th:text="${vacancy.status}"></td>
                         <td th:text="${vacancy.featured == 1 ? 'Yes' : 'NO' }"></td>
                         <td>
-                            <a href="#" class="btn btn-success btn-sm" role="button" title="Edit record."><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                            <a th:href="@{/vacancy/edit/{id}  (id=${vacancy.id})  }" class="btn btn-success btn-sm" role="button" title="Edit record."><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                             <a th:href="@{/vacancy/delete/{id}  (id=${vacancy.id})   }" class="btn btn-success btn-sm confirmar" role="button" title="Delete record"><i class="fas fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>

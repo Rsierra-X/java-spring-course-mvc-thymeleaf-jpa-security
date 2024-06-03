@@ -67,6 +67,14 @@ public class VacancyController {
         return "redirect:/vacancy/index";
     }
 
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable int id, Model model) {
+        Vacancy vacancy = vacancyService.getVacancyById(id);
+        model.addAttribute("categories", categoryService.getCategories());
+        model.addAttribute("vacancy", vacancy);
+        return "vacancy/formVacancy";
+    }
+
     @GetMapping("/view/{id}")
     public String viewDetail(@PathVariable int id, Model model) {
         Vacancy vacancy = vacancyService.getVacancyById(id);
