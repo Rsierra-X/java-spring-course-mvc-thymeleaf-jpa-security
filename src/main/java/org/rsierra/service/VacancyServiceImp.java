@@ -96,4 +96,9 @@ public class VacancyServiceImp implements IVacancyService {
     public List<Vacancy> searchFeaturedVacancies() {
         return vacancyRepository.findByFeaturedAndStatusOrderByIdDesc(1,"Aprobada");
     }
+
+    @Override
+    public void deleteVacancy(Integer idVacancy) {
+
+    }
 }

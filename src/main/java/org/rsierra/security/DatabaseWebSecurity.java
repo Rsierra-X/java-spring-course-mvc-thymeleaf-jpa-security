@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -34,11 +35,17 @@ public class DatabaseWebSecurity {
                 // Las vistas públicas no requieren autenticación
                 .requestMatchers("/", "/signup", "/search", "/vacancy/view/**").permitAll()
 
+                // Asignar permisos a URLs por ROLES
+                .requestMatchers("/vacancy/**").hasAnyAuthority("SUPERVISOR", "ADMINISTRADOR")
+                .requestMatchers("/categories/**").hasAnyAuthority("SUPERVISOR", "ADMINISTRADOR")
+                //.requestMatchers("/users/**").hasAnyAuthority("ADMINISTRADOR")
+
+
                 // Todas las demás URLs de la Aplicación requieren autenticación
                 .anyRequest().authenticated());
 
         // El formulario de Login no requiere autenticacion
-        http.formLogin(form -> form.permitAll());
+        http.formLogin(AbstractAuthenticationFilterConfigurer::permitAll);
 
         return http.build();
     }

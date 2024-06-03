@@ -69,9 +69,9 @@
                             <div class="form-group">
                                 <label for="status">Status</label>
                                 <select class="form-control" th:field="*{status}" id="status" name="status">
-                                    <option value="Created">Created</option>
-                                    <option value="Approved">Approved</option>
-                                    <option value="Deleted">Deleted</option>
+                                    <option value="Creada">Created</option>
+                                    <option value="Aprobada">Approved</option>
+                                    <option value="Eliminada">Deleted</option>
                                 </select>
                             </div>
                         </div>
@@ -87,6 +87,11 @@
                                 <input checked="checked" class="form-check-input" th:field="*{featured}" id="featured" name="featured" type="checkbox"
                                        value="1">
                                 <label class="form-check-label" for="featured">Featured</label>
+                            </div>
+                            <div class="form-check">
+                                <input checked="checked" class="form-check-input" th:field="*{featured}" id="featured1" name="featured" type="checkbox"
+                                       value="0">
+                                <label class="form-check-label" for="featured1">No Featured</label>
                             </div>
                         </div>
                     </div>
@@ -117,7 +122,7 @@
                             <label for="imagen">Imagen/Logo</label>
                             <img
                                 class="rounded mx-auto d-block"
-                                th:src="@{/images/{img} ( img=${vacancy.image} )  }"
+                                th:src="@{/images/{img}(img=${vacancy.image})}"
                                 alt="Generic placeholder image"
                                 width="200"
                                 height="200"
@@ -144,7 +149,7 @@
 <script th:src="@{/tinymce/tinymce.min.js}"></script>
 <script>
     $(function () {
-        $("#fecha").datepicker({dateFormat: "dd-mm-yy"});
+        $("#date").datepicker({dateFormat: "dd-mm-yy"});
     });
 
     tinymce.init({

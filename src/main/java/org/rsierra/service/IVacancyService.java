@@ -9,4 +9,5 @@ public interface IVacancyService {
     Vacancy getVacancyById(int id);
     void saveVacancy(Vacancy vacancy);
     List<Vacancy> searchFeaturedVacancies();
+    void deleteVacancy(Integer idVacancy);
 }

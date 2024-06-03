@@ -3,11 +3,12 @@ package org.rsierra.controllers;
 import org.rsierra.models.Category;
 import org.rsierra.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -47,6 +48,21 @@ public class CategoriesController {
         }
         categoryService.addCategory(category);
         attributes.addFlashAttribute("successMsg", "Save Success");
+        return "redirect:/categories/index";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable int id, Model model) {
+        Category category = categoryService.getCategoryById(id);
+        model.addAttribute("category", category);
+        return "categories/formCategories";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable int id, RedirectAttributes attributes) {
+        // Eliminamos la categoria.
+        categoryService.delete(id);
+        attributes.addFlashAttribute("successMsg", "La categoría fue eliminada!.");
         return "redirect:/categories/index";
     }
 }

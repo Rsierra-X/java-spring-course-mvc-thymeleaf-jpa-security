@@ -28,5 +28,9 @@ public class CategoryServiceJpa implements ICategoryService {
         return categoryRepository.findById(id).orElse(null);
     }
 
+    public void delete(Integer idCategory) {
+        categoryRepository.deleteById(idCategory);
+    }
+
 
 }
