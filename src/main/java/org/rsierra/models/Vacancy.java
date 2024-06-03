@@ -21,7 +21,6 @@ public class  Vacancy {
     private String image = "no-image.png";
     @OneToOne
     @JoinColumn(name = "idCategory")
-    @Transient
     private Category category;
 
     public String getStatus() {
