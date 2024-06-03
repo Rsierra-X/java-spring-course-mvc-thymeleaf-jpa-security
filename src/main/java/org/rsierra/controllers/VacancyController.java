@@ -32,6 +32,14 @@ public class VacancyController {
     @Autowired
     private ICategoryService categoryService;
 
+    @GetMapping("/edit/{id}")
+    public String updateVacancy(@PathVariable int id, Model model) {
+        Vacancy vacancy = vacancyService.getVacancyById(id);
+        model.addAttribute("vacancy", vacancy);
+        model.addAttribute("categories", categoryService.getCategories());
+        return "vacancy/formVacancy";
+    }
+
     @GetMapping("/index")
     public String showVacancies(Model model) {
         List<Vacancy> vacancyList = vacancyService.getVacancies();
