@@ -7,6 +7,7 @@ import org.rsierra.utils.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import org.springframework.data.domain.Pageable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -47,6 +49,13 @@ public class VacancyController {
         return "vacancy/listVacancies";
     }
 
+    @GetMapping(value = "/indexPaginate")
+    public String mostrarIndexPaginado(Model model, Pageable page) {
+        Page<Vacancy> lista = vacancyService.buscarTodas(page);
+        model.addAttribute("vacancies", lista);
+        return "vacancy/listVacancies";
+    }
+
     @GetMapping("/create")
     public String createVacancy(Vacancy vacancy, Model model) {
         model.addAttribute("categories", categoryService.getCategories());
@@ -73,14 +82,6 @@ public class VacancyController {
         vacancyService.saveVacancy(vacancy);
         attributes.addFlashAttribute("successMsg", "Save Success");
         return "redirect:/vacancy/index";
-    }
-
-    @GetMapping("/edit/{id}")
-    public String edit(@PathVariable int id, Model model) {
-        Vacancy vacancy = vacancyService.getVacancyById(id);
-        model.addAttribute("categories", categoryService.getCategories());
-        model.addAttribute("vacancy", vacancy);
-        return "vacancy/formVacancy";
     }
 
     @GetMapping("/view/{id}")

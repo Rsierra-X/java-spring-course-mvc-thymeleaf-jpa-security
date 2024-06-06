@@ -103,6 +103,10 @@ public class  Vacancy {
         this.category = category;
     }
 
+    public void reset() {
+        this.image = null;
+    }
+
     @Override
     public String toString() {
         return "Vacancy{" +

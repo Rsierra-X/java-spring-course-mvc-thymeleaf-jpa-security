@@ -3,6 +3,9 @@ package org.rsierra.service;
 import org.rsierra.models.Vacancy;
 import org.rsierra.repository.VacancyRepository;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -100,5 +103,15 @@ public class VacancyServiceImp implements IVacancyService {
     @Override
     public void deleteVacancy(Integer idVacancy) {
 
+    }
+
+    @Override
+    public List<Vacancy> searchByExample(Example<Vacancy> example) {
+        return List.of();
+    }
+
+    @Override
+    public Page<Vacancy> buscarTodas(Pageable page) {
+        return null;
     }
 }
