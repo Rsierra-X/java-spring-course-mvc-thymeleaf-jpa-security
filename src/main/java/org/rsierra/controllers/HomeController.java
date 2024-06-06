@@ -4,14 +4,20 @@ import jakarta.servlet.http.HttpSession;
 import org.rsierra.models.Profile;
 import org.rsierra.models.User;
 import org.rsierra.models.Vacancy;
+import org.rsierra.service.ICategoryService;
 import org.rsierra.service.IUserService;
 import org.rsierra.service.IVacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -30,6 +36,9 @@ public class HomeController {
 	@Autowired
 	private IUserService serviceUser;
 
+	@Autowired
+	private ICategoryService serviceCategory;
+
 	@GetMapping("/table")
 	public String showTable(Model model) {
 		List<Vacancy> lista = vacancyService.getVacancies();
@@ -46,6 +55,20 @@ public class HomeController {
 		vacancy.setSalary(2500.00);
 		model.addAttribute("vacancy", vacancy);
 		return "vacancyDetail";
+	}
+
+	@GetMapping("/search")
+	public String buscar(@ModelAttribute("search") Vacancy vacancy, Model model) {
+		System.out.println("Buscando por : " + vacancy);
+
+		ExampleMatcher matcher = ExampleMatcher.
+				// where descripcion like '%?%'
+						matching().withMatcher("description", ExampleMatcher.GenericPropertyMatchers.contains());
+
+		Example<Vacancy> example = Example.of(vacancy,matcher);
+		List<Vacancy> list = vacancyService.searchByExample(example);
+		model.addAttribute("vacancies", list);
+		return "home";
 	}
 
 	@GetMapping("/list")
@@ -105,9 +128,18 @@ public class HomeController {
 		return "redirect:/users/index";
 	}
 
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+	}
+
 	@ModelAttribute
 	public void setGenerics(Model model) {
+		Vacancy searchVacancy = new Vacancy();
+		searchVacancy.reset();
 		model.addAttribute("vacancies", vacancyService.searchFeaturedVacancies());
+		model.addAttribute("categories", serviceCategory.getCategories());
+		model.addAttribute("search", searchVacancy);
 	}
 	
 }

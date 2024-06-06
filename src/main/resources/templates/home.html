@@ -26,15 +26,13 @@
 		<div class="container">
 			<h3>Find the job you are looking for.</h3>
 			You can search by description and category.
-			<form class="form-inline">
-				<input type="text" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Type a search">&nbsp;
-				<select class="custom-select custom-select mb-3">
-					<option selected>Select a category</option>
-					<option value="1">Sales</option>
-					<option value="2">Accounting</option>
-					<option value="3">Transport</option>
-					<option value="4">IT</option>
-					<option value="5">Construction</option>
+			<form class="form-inline" th:action="@{/search}" method="get" th:object="${search}">
+				<input th:field="*{description}" type="text" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Type a search">&nbsp;
+				<select th:field="*{category.id}" class="custom-select custom-select mb-3">
+					<option th:value="${null}">Select a category</option>
+					<option th:each="category : ${categories}"
+							th:value="${category.id}"
+							th:text="${category.name}"></option>
 				</select>&nbsp;
 				<button type="submit" class="btn btn-primary mb-3">Search</button>
 			</form>
@@ -51,7 +49,7 @@
 			</div>
 			<div class="col-md-9">
 				<h2 th:text="${vacancy.name}"></h2>
-				<h6 class="card-title"><strong>Category: </strong> <span></span></h6>
+				<h6 class="card-title"><strong>Category: </strong> <span th:text="${vacancy.category.name}"></span></h6>
 				<h6 class="card-title"><strong>Published: </strong> <span th:text="${vacancy.date}"></span></h6>
 				<p th:text="${vacancy.description}"></p>
 				<p><a class="btn btn-secondary" th:href="@{/vacancy/view/{id} (id=${vacancy.id})  }" role="button">View details &raquo;</a></p>
