@@ -7,6 +7,7 @@ import org.rsierra.utils.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import org.springframework.data.domain.Pageable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -44,6 +46,13 @@ public class VacancyController {
     public String showVacancies(Model model) {
         List<Vacancy> vacancyList = vacancyService.getVacancies();
         model.addAttribute("vacancies", vacancyList);
+        return "vacancy/listVacancies";
+    }
+
+    @GetMapping(value = "/indexPaginate")
+    public String mostrarIndexPaginado(Model model, Pageable page) {
+        Page<Vacancy> lista = vacancyService.buscarTodas(page);
+        model.addAttribute("vacancies", lista);
         return "vacancy/listVacancies";
     }
 

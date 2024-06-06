@@ -6,6 +6,8 @@ import org.rsierra.service.IVacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,5 +43,10 @@ public class VacancyServiceJpa implements IVacancyService {
 
     public List<Vacancy> searchByExample(Example<Vacancy> example) {
         return  vacancyRepository.findAll(example);
+    }
+
+    @Override
+    public Page<Vacancy> buscarTodas(Pageable page) {
+        return vacancyRepository.findAll(page);
     }
 }
