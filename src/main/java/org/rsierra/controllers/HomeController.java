@@ -13,13 +13,11 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -38,6 +36,9 @@ public class HomeController {
 
 	@Autowired
 	private ICategoryService serviceCategory;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@GetMapping("/table")
 	public String showTable(Model model) {
@@ -111,6 +112,12 @@ public class HomeController {
 
 	@PostMapping("/signup")
 	public String saveRegister(User user, RedirectAttributes attributes) {
+		// Recuperamos el password en texto plano
+		String pwdPlano = user.getPassword();
+		// Encriptamos el pwd BCryptPasswordEncoder
+		String podEncrypt = passwordEncoder.encode(pwdPlano);
+
+		user.setPassword(podEncrypt);
 		user.setStatus(1); // Activado por defecto
 		user.setRegisterDate(new Date()); // Fecha de Registro, la fecha actual del servidor
 
@@ -126,6 +133,12 @@ public class HomeController {
 		attributes.addFlashAttribute("successMsg", "El registro fue guardado correctamente!");
 
 		return "redirect:/users/index";
+	}
+
+	@GetMapping("/bcrypt/{texto}")
+	@ResponseBody
+	public String encryptors(@PathVariable String texto) {
+		return texto + " Encriptado en Bcrypt: " + passwordEncoder.encode(texto);
 	}
 
 	@InitBinder
