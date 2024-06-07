@@ -1,5 +1,6 @@
 package org.rsierra.controllers;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.rsierra.models.Profile;
 import org.rsierra.models.User;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -45,6 +47,18 @@ public class HomeController {
 		List<Vacancy> lista = vacancyService.getVacancies();
 		model.addAttribute("vacantes", lista);
 		return "table";
+	}
+
+	@GetMapping("/login")
+	public String mostrarLogin() {
+		return "formLogin";
+	}
+
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+		logoutHandler.logout(request, null, null);
+		return "redirect:/";
 	}
 
 	@GetMapping("/vacancyDetail")

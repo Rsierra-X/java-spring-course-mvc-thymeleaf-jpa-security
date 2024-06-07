@@ -35,7 +35,7 @@ public class DatabaseWebSecurity {
                 .requestMatchers("/bootstrap/**", "/images/**", "/tinymce/**", "/logos/**").permitAll()
 
                 // Las vistas públicas no requieren autenticación
-                .requestMatchers("/", "/signup", "/search","/bcrypt/**", "/vacancy/view/**").permitAll()
+                .requestMatchers("/","/login", "/signup", "/search","/bcrypt/**", "/vacancy/view/**").permitAll()
 
                 // Asignar permisos a URLs por ROLES
                 .requestMatchers("/vacancy/**").hasAnyAuthority("SUPERVISOR", "ADMINISTRADOR")
@@ -47,8 +47,7 @@ public class DatabaseWebSecurity {
                 .anyRequest().authenticated());
 
         // El formulario de Login no requiere autenticacion
-        http.formLogin(AbstractAuthenticationFilterConfigurer::permitAll);
-
+        http.formLogin(form -> form.loginPage("/login").permitAll());
         return http.build();
     }
 
