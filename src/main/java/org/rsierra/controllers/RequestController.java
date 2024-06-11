@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/request")
@@ -42,7 +43,11 @@ public class RequestController {
     }
 
     @PostMapping("/save")
-    public String save(Request request, BindingResult result, @RequestParam MultipartFile resumeFile, Authentication auth, Model model) {
+    public String save(Request request,
+                       BindingResult result,
+                       @RequestParam MultipartFile resumeFile,
+                       Authentication auth,
+                       RedirectAttributes redirectAttributes) {
         String username = auth.getName();
 
         if (result.hasErrors()) {
@@ -58,6 +63,9 @@ public class RequestController {
         User user = userService.findByUsername(username);
         request.setUser(user);
 
+        requestService.saveRequest(request);
+
+        redirectAttributes.addFlashAttribute("message", "Request has been saved");
         return "redirect:/";
     }
 }

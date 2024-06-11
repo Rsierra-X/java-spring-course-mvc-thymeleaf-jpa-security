@@ -22,6 +22,10 @@ public class Request {
     @JoinColumn(name = "idUser") // foreignKey en la tabla de usuarios
     private User user;
 
+    public Request() {
+        this.date = LocalDate.now();
+    }
+
     public Integer getId() {
         return id;
     }
