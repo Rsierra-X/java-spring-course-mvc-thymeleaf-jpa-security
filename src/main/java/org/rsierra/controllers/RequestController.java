@@ -11,6 +11,8 @@ import org.rsierra.service.IVacancyService;
 import org.rsierra.utils.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +36,13 @@ public class RequestController {
 
     @Autowired
     private IUserService userService;
+
+    @GetMapping("/indexPaginate")
+    public String indexPaginate(Model model, Pageable pageable) {
+        Page<Request> list = requestService.getAllRequests(pageable);
+        model.addAttribute("requests", list);
+        return "request/listRequest";
+    }
 
     @GetMapping("/create/{id}")
     public String create(Request request,@PathVariable int id, Model model) {

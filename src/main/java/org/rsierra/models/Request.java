@@ -16,7 +16,7 @@ public class Request {
 
     @OneToOne
     @JoinColumn(name = "idVacant") // foreignKey en la tabla de solicitudes
-    private Vacancy vacant;
+    private Vacancy vacancy;
 
     @OneToOne
     @JoinColumn(name = "idUser") // foreignKey en la tabla de usuarios
@@ -58,12 +58,12 @@ public class Request {
         this.file = file;
     }
 
-    public Vacancy getVacant() {
-        return vacant;
+    public Vacancy getvacancy() {
+        return vacancy;
     }
 
-    public void setVacant(Vacancy vacant) {
-        this.vacant = vacant;
+    public void setvacancy(Vacancy vacancy) {
+        this.vacancy = vacancy;
     }
 
     public User getUser() {
@@ -81,7 +81,7 @@ public class Request {
                 ", date=" + date +
                 ", comments='" + comments + '\'' +
                 ", file='" + file + '\'' +
-                ", vacant=" + vacant +
+                ", vacancy=" + vacancy +
                 ", user=" + user +
                 '}';
     }
