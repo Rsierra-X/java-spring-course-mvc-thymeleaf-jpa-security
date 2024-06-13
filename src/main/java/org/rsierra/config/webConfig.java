@@ -14,7 +14,7 @@ public class webConfig implements WebMvcConfigurer {
 
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //registry.addResourceHandler("/logos/**").addResourceLocations("file:/empleos/img-vacantes/"); // Linux
-        registry.addResourceHandler("/logos/**").addResourceLocations("file:C:/empleos/img-vacancies/"); // Windows
+        //registry.addResourceHandler("/logos/**").addResourceLocations("file:C:/empleos/img-vacancies/"); // Windows
         registry.addResourceHandler("/logos/**").addResourceLocations("file:" + rutaImagenes); // Windows
         registry.addResourceHandler("/cv/**").addResourceLocations("file:" + pathCv); // Windows
     }
