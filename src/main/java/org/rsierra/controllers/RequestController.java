@@ -80,4 +80,14 @@ public class RequestController {
         redirectAttributes.addFlashAttribute("message", "Request has been saved");
         return "redirect:/";
     }
+
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable int id, RedirectAttributes attributes) {
+
+        requestService.deleteRequest(id);
+
+        attributes.addFlashAttribute("message", "La solicitud fue eliminada!.");
+        return "redirect:/request/indexPaginate";
+    }
 }

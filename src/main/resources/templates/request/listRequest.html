@@ -45,7 +45,7 @@
             <td th:text="${request.user.name}"></td>
             <td th:text="${request.date}"></td>
             <td>
-              <a th:href="@{/requests/delete/{id} (id=${request.id})}" class="btn btn-success btn-sm confirm" role="button" title="Delete the record.">
+              <a th:href="@{/request/delete/{id} (id=${request.id})}" class="btn btn-success btn-sm confirm" role="button" title="Delete the record.">
                 <i class="fas fa-trash" aria-hidden="true"></i>
               </a>
               <a th:href="@{/cv/{file} (file=${request.file})}" target="_blank" class="btn btn-success btn-sm" role="button" title="Download Resume.">
