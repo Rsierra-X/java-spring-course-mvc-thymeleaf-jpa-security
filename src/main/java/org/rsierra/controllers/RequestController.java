@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,7 +40,7 @@ public class RequestController {
     private IUserService userService;
 
     @GetMapping("/indexPaginate")
-    public String indexPaginate(Model model, Pageable pageable) {
+    public String indexPaginate(Model model,@PageableDefault(sort= {"id"},direction= Sort.Direction.DESC, size=20) Pageable pageable) {
         Page<Request> list = requestService.getAllRequests(pageable);
         model.addAttribute("requests", list);
         return "request/listRequest";
@@ -46,6 +48,7 @@ public class RequestController {
 
     @GetMapping("/create/{id}")
     public String create(Request request,@PathVariable int id, Model model) {
+        System.out.println("AQUIiii"+ id);
         Vacancy vacancy = vacancyService.getVacancyById(id);
         model.addAttribute("vacancy", vacancy);
         return "request/formRequest";
@@ -76,5 +79,15 @@ public class RequestController {
 
         redirectAttributes.addFlashAttribute("message", "Request has been saved");
         return "redirect:/";
+    }
+
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable int id, RedirectAttributes attributes) {
+
+        requestService.deleteRequest(id);
+
+        attributes.addFlashAttribute("message", "La solicitud fue eliminada!.");
+        return "redirect:/request/indexPaginate";
     }
 }

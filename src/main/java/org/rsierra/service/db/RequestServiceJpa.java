@@ -23,8 +23,8 @@ public class RequestServiceJpa implements IRequestService {
     }
 
     @Override
-    public void deleteRequest(Request request) {
-        requestRepository.delete(request);
+    public void deleteRequest(Integer id) {
+        requestRepository.deleteById(id);
     }
 
     @Override

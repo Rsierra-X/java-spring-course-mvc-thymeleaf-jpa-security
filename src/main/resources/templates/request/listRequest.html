@@ -27,7 +27,7 @@
     <div class="card">
       <h4 class="card-header"><strong>List of Job Applications</strong></h4>
       <div class="card-body">
-        <div th:if="${msg != null}" class='alert alert-success' th:text="${msg}" role='alert'></div>
+        <div th:if="${message != null}" class='alert alert-success' th:text="${message}" role='alert'></div>
         <table class="table table-hover">
           <thead class="thead-light">
           <tr>
@@ -39,22 +39,26 @@
           </tr>
           </thead>
           <tbody>
-          <tr th:each="application : ${applications.content}">
-            <td th:text="${application.vacancy.category.name}">Finance</td>
-            <td th:text="${application.vacancy.name}">Public Accountant</td>
-            <td th:text="${application.user.name}">Maria Gomez</td>
-            <td th:text="${application.date}">12-01-2019</td>
+          <tr th:each="request : ${requests.content}">
+            <td th:text="${request.vacancy.category.name}"></td>
+            <td th:text="${request.vacancy.name}"></td>
+            <td th:text="${request.user.name}"></td>
+            <td th:text="${request.date}"></td>
             <td>
-              <a th:href="@{/applications/delete/{id} (id=${application.id}) }" class="btn btn-success btn-sm confirm" role="button" title="Delete the record."><i class="fas fa-trash" aria-hidden="true"></i></a>
-              <a th:href="@{/cv/{file} (file=${application.file}) }" target="_blank" class="btn btn-success btn-sm" role="button" title="Download Resume."><i class="fas fa-download" aria-hidden="true"></i></a>
+              <a th:href="@{/request/delete/{id} (id=${request.id})}" class="btn btn-success btn-sm confirm" role="button" title="Delete the record.">
+                <i class="fas fa-trash" aria-hidden="true"></i>
+              </a>
+              <a th:href="@{/cv/{file} (file=${request.file})}" target="_blank" class="btn btn-success btn-sm" role="button" title="Download Resume.">
+                <i class="fas fa-download" aria-hidden="true"></i>
+              </a>
             </td>
           </tr>
           </tbody>
         </table>
-        <nav th:if="${applications.totalPages > 0}" aria-label="Page navigation example" >
+        <nav th:if="${requests.totalPages > 0}" aria-label="Page navigation example" >
           <ul class="pagination">
-            <li class="page-item"><a th:href="@{/applications/indexPaginate(page=${applications.number - 1})}" class="page-link">Previous</a></li>
-            <li class="page-item"><a th:href="@{/applications/indexPaginate(page=${applications.number + 1})}" class="page-link">Next</a></li>
+            <li class="page-item"><a th:href="@{/requests/indexPaginate(page=${requests.number - 1})}" class="page-link">Previous</a></li>
+            <li class="page-item"><a th:href="@{/requests/indexPaginate(page=${requests.number + 1})}" class="page-link">Next</a></li>
           </ul>
         </nav>
       </div>

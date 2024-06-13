@@ -15,7 +15,7 @@ public class Request {
     private String file; // El nombre del archivo PDF, DOCX del CV.
 
     @OneToOne
-    @JoinColumn(name = "idVacant") // foreignKey en la tabla de solicitudes
+    @JoinColumn(name = "idVacancy") // foreignKey en la tabla de solicitudes
     private Vacancy vacancy;
 
     @OneToOne
@@ -58,11 +58,11 @@ public class Request {
         this.file = file;
     }
 
-    public Vacancy getvacancy() {
+    public Vacancy getVacancy() {
         return vacancy;
     }
 
-    public void setvacancy(Vacancy vacancy) {
+    public void setVacancy(Vacancy vacancy) {
         this.vacancy = vacancy;
     }
 
